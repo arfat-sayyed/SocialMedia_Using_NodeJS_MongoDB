@@ -9,6 +9,8 @@ router.get('/sign-in', users_Controllers.signin);
 
 router.post('/create', users_Controllers.create);
 
+router.post('/create-session', users_Controllers.createSession);
+
 
 
 
