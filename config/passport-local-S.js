@@ -25,11 +25,12 @@ function(email, password, done){
 ));
 
 passport.serializeUser(function(user,done){
-    done(null, user.id);
+    console.log(user.id);
+        done(null, user.id);
 });
 
 
-passport.deserializeUser(function(id,done){
+passport.deserializeUser(function(id, done){
     User.findById(id, function(err, user){
         if(err){
             console.log('Error In Finding User');
@@ -48,9 +49,9 @@ passport.checkAuthentication = function(req,res,next){
     return res.redirect('/users/sign-in');
 }
 
-passport.setAuthenticatedUser = function(req, res, next){
+passport.setAuthentication = function(req, res, next){
     if( req.isAuthenticated()){
-        res.locals.User = req.user
+        res.locals.user = req.user
     }
 
     next();

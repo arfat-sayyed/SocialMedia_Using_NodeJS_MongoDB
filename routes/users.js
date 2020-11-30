@@ -4,10 +4,11 @@ const passport = require('passport');
 const { route } = require('.');
 const users_Controllers = require('../controllers/users_controllers');
 
-router.get('/profile',passport.checkAuthentication  , users_Controllers.profile);
+router.get('/profile/:id',passport.checkAuthentication  , users_Controllers.profile);
+router.post('/update/:id',passport.checkAuthentication  , users_Controllers.update);
 router.get('/posts', users_Controllers.posts);
-router.get('/sign-up', users_Controllers.signup);
-router.get('/sign-in', users_Controllers.signin);
+router.get('/sign-up', users_Controllers.signUp);
+router.get('/sign-in', users_Controllers.signIn);
 
 router.post('/create', users_Controllers.create);
 
