@@ -19,7 +19,7 @@ app.use(sassMiddleware({
     outputStyle: 'extended',
     prefix: '/css'
 }));
-const { use } = require('./routes');
+// const { use } = require('./routes');
 app.use(express.urlencoded());
 
 app.use(cookieParser());
