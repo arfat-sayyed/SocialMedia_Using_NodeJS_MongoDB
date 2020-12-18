@@ -4,26 +4,20 @@ const User = require('../models/user');
 
 module.exports.home = async function(req,res){
 
-    // Post.find({}, function(err, posts){
-        
-    // return res.render('home',{
-    //     title: "CODIAL | Home",
-    //     posts: posts
-    // });
-
-    // });
     try{
 
-    
-
     let posts = await Post.find({})
+    .sort('-createdAt')
     .populate('user')
     .populate({
         path: 'comments',
         populate: {
             path: 'user'
+        },
+        populate:{
+            path: 'likes'
         }
-    });
+    }).populate('likes');
 
     let users = await User.find({});
 
